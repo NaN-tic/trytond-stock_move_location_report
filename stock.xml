@@ -3,38 +3,38 @@
      copyright notices and license terms. -->
 <tryton>
     <data>
-        <!-- stock.traceability.report -->
-        <record model="ir.action.report" id="report_stock_traceability">
-            <field name="name">Traceability</field>
-            <field name="report_name">stock.traceability.report</field>
-            <field name="report">stock_traceability_report/report/stock_traceability_report.html</field>
+        <!-- stock.move.location.report -->
+        <record model="ir.action.report" id="report_stock_move_location">
+            <field name="name">Stock Move Location</field>
+            <field name="report_name">stock.move.location.report</field>
+            <field name="report">stock_move_location_report/report/stock_move_location_report.html</field>
             <field name="extension">html</field>
             <field name="template_extension">jinja</field>
         </record>
 
-        <record model="ir.ui.view" id="print_stock_traceability_start_view_form">
-            <field name="model">stock.traceability.start</field>
+        <record model="ir.ui.view" id="print_stock_move_location_start_view_form">
+            <field name="model">stock.move.location.start</field>
             <field name="type">form</field>
-            <field name="name">stock_traceability_start_form</field>
+            <field name="name">stock_move_location_start_form</field>
         </record>
 
-        <record model="ir.action.wizard" id="print_stock_traceability">
-            <field name="name">Traceability</field>
-            <field name="wiz_name">stock.print_traceability</field>
+        <record model="ir.action.wizard" id="print_stock_move_location">
+            <field name="name">Stock Move Location</field>
+            <field name="wiz_name">stock.print_stock_move_location</field>
         </record>
 
-        <record model="ir.action.keyword" id="print_stock_traceability_product_keyword">
+        <record model="ir.action.keyword" id="print_stock_move_location_product_keyword">
             <field name="keyword">form_print</field>
             <field name="model">product.template,-1</field>
-            <field name="action" ref="print_stock_traceability"/>
+            <field name="action" ref="print_stock_move_location"/>
         </record>
     </data>
 
     <data depends="stock_lot">
-        <record model="ir.action.keyword" id="print_stock_traceability_lot_keyword">
+        <record model="ir.action.keyword" id="print_stock_move_location_lot_keyword">
             <field name="keyword">form_print</field>
             <field name="model">stock.lot,-1</field>
-            <field name="action" ref="print_stock_traceability"/>
+            <field name="action" ref="print_stock_move_location"/>
         </record>
     </data>
 </tryton>

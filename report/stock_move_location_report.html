@@ -1,4 +1,4 @@
-{% from "stock_traceability_report/report/_helpers.html" import draw_table, draw_table_shipment, draw_table_production %}
+{% from "stock_move_location_report/report/_helpers.html" import draw_table, draw_table_shipment, draw_table_production %}
 {% set base_url=data.parameters.base_url %}
 <!DOCTYPE html>
 <html lang="en">
@@ -7,13 +7,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
-    <title>{{ _('Traceability') }}</title>
+    <title>{{ _('Stock Move Location') }}</title>
   </head>
   <body>
     <table class="table">
       <tbody>
         <tr>
-          <td><h1>{{ _('Traceability') }}</h1></td>
+          <td><h1>{{ _('Stock Move Location') }}</h1></td>
           <td align="right">
             <a href="{{ base_url }}" alt="{{ data.parameters.company.render.rec_name }}">{{ data.parameters.company.render.rec_name }}</a>
             <button type="button" class="btn tn-outline-light btn-sm" onclick="expand()">{{ _('Expand All') }}</button>
