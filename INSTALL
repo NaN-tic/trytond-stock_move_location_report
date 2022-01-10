@@ -1,5 +1,5 @@
-Installing nantic_stock_traceability_report
-===========================================
+Installing nantic_stock_move_location_report
+============================================
 
 Prerequisites
 -------------
@@ -10,7 +10,7 @@ Prerequisites
 Installation
 ------------
 
-Once you've downloaded and unpacked the nantic_stock_traceability_report source
+Once you've downloaded and unpacked the nantic_stock_move_location_report source
 release, enter the directory where the archive was unpacked, and run:
 
     python setup.py install
@@ -26,4 +26,4 @@ documentation:
   http://docs.python.org/inst/inst.html
 
 To use without installation, extract the archive into ``trytond/modules`` with
-the directory name stock_traceability_report.
+the directory name stock_move_location_report.

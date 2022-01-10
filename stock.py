@@ -12,9 +12,9 @@ from trytond.modules.html_report.engine import DualRecord
 from trytond.url import http_host
 
 
-class PrintStockTraceabilityStart(ModelView):
-    'Print Stock Traceability Start'
-    __name__ = 'stock.traceability.start'
+class PrintStockMoveLocationStart(ModelView):
+    'Print Stock Move Location Start'
+    __name__ = 'stock.move.location.start'
     from_date = fields.Date('From Date',
         domain = [
             If(Bool(Eval('from_date')) & Bool(Eval('to_date')),
@@ -40,15 +40,15 @@ class PrintStockTraceabilityStart(ModelView):
             return locations[0].id
 
 
-class PrintStockTraceability(Wizard):
-    'Print Stock Traceability'
-    __name__ = 'stock.print_traceability'
-    start = StateView('stock.traceability.start',
-        'stock_traceability_report.print_stock_traceability_start_view_form', [
+class PrintStockMoveLocation(Wizard):
+    'Print Stock Move Location'
+    __name__ = 'stock.print_stock_move_location'
+    start = StateView('stock.move.location.start',
+        'stock_move_location_report.print_stock_move_location_start_view_form', [
             Button('Cancel', 'end', 'tryton-cancel'),
             Button('Print', 'print_', 'tryton-print', default=True),
             ])
-    print_ = StateReport('stock.traceability.report')
+    print_ = StateReport('stock.move.location.report')
 
     def do_print_(self, action):
         context = Transaction().context
@@ -62,8 +62,8 @@ class PrintStockTraceability(Wizard):
         return action, data
 
 
-class PrintStockTraceabilityReport(HTMLReport):
-    __name__ = 'stock.traceability.report'
+class PrintStockMoveLocationReport(HTMLReport):
+    __name__ = 'stock.move.location.report'
 
     @classmethod
     def get_context(cls, records, data):
@@ -295,8 +295,8 @@ class PrintStockTraceabilityReport(HTMLReport):
 
         with Transaction().set_context(**context):
             records, parameters = cls.prepare(data)
-            return super(PrintStockTraceabilityReport, cls).execute(ids, {
-                    'name': 'stock.traceability.report',
+            return super(PrintStockMoveLocationReport, cls).execute(ids, {
+                    'name': 'stock.move.location.report',
                     'model': data['model'],
                     'records': records,
                     'parameters': parameters,

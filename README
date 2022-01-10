@@ -1,7 +1,7 @@
-stock_traceability_report
-=========================
+stock_move_location_report
+==========================
 
-The stock_traceability_report module of the Tryton application platform.
+The stock_move_location_report module of the Tryton application platform.
 
 Installing
 ----------

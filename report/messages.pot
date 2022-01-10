@@ -39,7 +39,7 @@ msgid "Production"
 msgstr ""
 
 #: _helpers.html:15 _helpers.html:43 _helpers.html:71
-#: stock_traceability_report.html:32
+#: stock_move_location_report.html:32
 msgid "Lot"
 msgstr ""
 
@@ -55,7 +55,7 @@ msgstr ""
 msgid "Effective Date"
 msgstr ""
 
-#: _helpers.html:20 _helpers.html:48 stock_traceability_report.html:35
+#: _helpers.html:20 _helpers.html:48 stock_move_location_report.html:35
 msgid "Warehouse"
 msgstr ""
 
@@ -63,75 +63,74 @@ msgstr ""
 msgid "Lots"
 msgstr ""
 
-#: stock_traceability_report.html:10 stock_traceability_report.html:16
-msgid "Traceability"
+#: stock_move_location_report.html:10 stock_move_location_report.html:16
+msgid "Stock Move Location"
 msgstr ""
 
-#: stock_traceability_report.html:19
+#: stock_move_location_report.html:19
 msgid "Expand All"
 msgstr ""
 
-#: stock_traceability_report.html:24
+#: stock_move_location_report.html:24
 msgid "From Date"
 msgstr ""
 
-#: stock_traceability_report.html:25
+#: stock_move_location_report.html:25
 msgid "To Date"
 msgstr ""
 
-#: stock_traceability_report.html:31
+#: stock_move_location_report.html:31
 msgid "Product"
 msgstr ""
 
-#: stock_traceability_report.html:41
+#: stock_move_location_report.html:41
 msgid "Initial Stock"
 msgstr ""
 
-#: stock_traceability_report.html:49
+#: stock_move_location_report.html:49
 msgid "Supplier Incomming"
 msgstr ""
 
-#: stock_traceability_report.html:64
+#: stock_move_location_report.html:64
 msgid "Supplier Returns"
 msgstr ""
 
-#: stock_traceability_report.html:79
+#: stock_move_location_report.html:79
 msgid "Customer Outgoings"
 msgstr ""
 
-#: stock_traceability_report.html:94
+#: stock_move_location_report.html:94
 msgid "Customer Returns"
 msgstr ""
 
-#: stock_traceability_report.html:112
+#: stock_move_location_report.html:112
 msgid "Production Out"
 msgstr ""
 
-#: stock_traceability_report.html:127
+#: stock_move_location_report.html:127
 msgid "Production In"
 msgstr ""
 
-#: stock_traceability_report.html:143
+#: stock_move_location_report.html:143
 msgid "Inventory"
 msgstr ""
 
-#: stock_traceability_report.html:152
+#: stock_move_location_report.html:152
 msgid "From Lost & Found"
 msgstr ""
 
-#: stock_traceability_report.html:161
+#: stock_move_location_report.html:161
 msgid "To Lost & Found"
 msgstr ""
 
-#: stock_traceability_report.html:177
+#: stock_move_location_report.html:177
 msgid "Entries from outside warehouse"
 msgstr ""
 
-#: stock_traceability_report.html:192
+#: stock_move_location_report.html:192
 msgid "Outputs from our warehouse"
 msgstr ""
 
-#: stock_traceability_report.html:204
+#: stock_move_location_report.html:204
 msgid "Total"
 msgstr ""
-
