@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-# This file is part stock_traceability_report module for Tryton.
+# This file is part stock_move_location_report module for Tryton.
 # The COPYRIGHT file at the top level of this repository contains
 # the full copyright notices and license terms.
 
@@ -40,8 +40,8 @@ version = info.get('version', '0.0.1')
 major_version, minor_version, _ = version.split('.', 2)
 major_version = int(major_version)
 minor_version = int(minor_version)
-name = 'nantic_stock_traceability_report'
-download_url = 'https://bitbucket.org/nantic/trytond-stock_traceability_report'
+name = 'nantic_stock_move_location_report'
+download_url = 'https://bitbucket.org/nantic/trytond-stock_move_location_report'
 
 requires = []
 for dep in info.get('depends', []):
@@ -58,20 +58,20 @@ if minor_version % 2:
 
 setup(name=name,
     version=version,
-    description='Tryton Stock Traceability Report Module',
+    description='Tryton Stock Move Location Report Module',
     long_description=read('README'),
     author='NaN-tic',
     author_email='info@nan-tic.com',
     url='https://bitbucket.org/nantic/',
     download_url=download_url,
     keywords='',
-    package_dir={'trytond.modules.stock_traceability_report': '.'},
+    package_dir={'trytond.modules.stock_move_location_report': '.'},
     packages=[
-        'trytond.modules.stock_traceability_report',
-        'trytond.modules.stock_traceability_report.tests',
+        'trytond.modules.stock_move_location_report',
+        'trytond.modules.stock_move_location_report.tests',
         ],
     package_data={
-        'trytond.modules.stock_traceability_report': (info.get('xml', [])
+        'trytond.modules.stock_move_location_report': (info.get('xml', [])
             + ['tryton.cfg', 'view/*.xml', 'locale/*.po', '*.odt',
                 'icons/*.svg', 'tests/*.rst']),
         },
@@ -101,7 +101,7 @@ setup(name=name,
     zip_safe=False,
     entry_points="""
     [trytond.modules]
-    stock_traceability_report = trytond.modules.stock_traceability_report
+    stock_move_location_report = trytond.modules.stock_move_location_report
     """,
     test_suite='tests',
     test_loader='trytond.test_loader:Loader',

@@ -6,11 +6,11 @@ from . import stock
 
 def register():
     Pool.register(
-        stock.PrintStockTraceabilityStart,
-        module='stock_traceability_report', type_='model')
+        stock.PrintStockMoveLocationStart,
+        module='stock_move_location_report', type_='model')
     Pool.register(
-        stock.PrintStockTraceability,
-        module='stock_traceability_report', type_='wizard')
+        stock.PrintStockMoveLocation,
+        module='stock_move_location_report', type_='wizard')
     Pool.register(
-        stock.PrintStockTraceabilityReport,
-        module='stock_traceability_report', type_='report')
+        stock.PrintStockMoveLocationReport,
+        module='stock_move_location_report', type_='report')

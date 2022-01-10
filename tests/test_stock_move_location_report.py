@@ -1,4 +1,4 @@
-# This file is part stock_traceability_report module for Tryton.
+# This file is part stock_move_location_report module for Tryton.
 # The COPYRIGHT file at the top level of this repository contains
 # the full copyright notices and license terms.
 from decimal import Decimal
@@ -11,9 +11,9 @@ from trytond.modules.company.tests import create_company, set_company
 from trytond.modules.html_report.engine import DualRecord
 
 
-class StockTraceabilityReportTestCase(ModuleTestCase):
-    'Test Stock Traceability Report module'
-    module = 'stock_traceability_report'
+class StockMoveLocationReportTestCase(ModuleTestCase):
+    'Test Stock Move Location Report module'
+    module = 'stock_move_location_report'
 
     @with_transaction()
     def test_tracebility_report(self):
@@ -24,8 +24,8 @@ class StockTraceabilityReportTestCase(ModuleTestCase):
         Product = pool.get('product.product')
         Location = pool.get('stock.location')
         Move = pool.get('stock.move')
-        PrintStockTraceabilityReport = pool.get('stock.traceability.report', type='report')
-        PrintStockTraceability = pool.get('stock.print_traceability', type='wizard')
+        PrintStockMoveLocationReport = pool.get('stock.move.location.report', type='report')
+        PrintStockMoveLocation = pool.get('stock.print_stock_move_location', type='wizard')
 
         unit, = Uom.search([('name', '=', 'Unit')])
         template, = Template.create([{
@@ -55,14 +55,14 @@ class StockTraceabilityReportTestCase(ModuleTestCase):
                             }])
                 Move.do([move])
 
-            session_id, _, _ = PrintStockTraceability.create()
-            print_traceability = PrintStockTraceability(session_id)
-            print_traceability.start.warehouse = storage.warehouse
-            print_traceability.start.from_date = None
-            print_traceability.start.to_date = None
+            session_id, _, _ = PrintStockMoveLocation.create()
+            print_stock_move_location = PrintStockMoveLocation(session_id)
+            print_stock_move_location.start.warehouse = storage.warehouse
+            print_stock_move_location.start.from_date = None
+            print_stock_move_location.start.to_date = None
             with Transaction().set_context(active_ids=[product.id], active_model='product.product'):
-                _, data = print_traceability.do_print_(None)
-                records, parameters = PrintStockTraceabilityReport.prepare(data)
+                _, data = print_stock_move_location.do_print_(None)
+                records, parameters = PrintStockMoveLocationReport.prepare(data)
                 record, = records
                 self.assertEqual(type(record['product']), DualRecord)
                 self.assertEqual(record['supplier_incommings_total'], 146)
@@ -71,5 +71,5 @@ class StockTraceabilityReportTestCase(ModuleTestCase):
 def suite():
     suite = test_suite()
     suite.addTests(unittest.TestLoader().loadTestsFromTestCase(
-            StockTraceabilityReportTestCase))
+            StockMoveLocationReportTestCase))
     return suite

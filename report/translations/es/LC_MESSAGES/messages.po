@@ -41,7 +41,7 @@ msgid "Production"
 msgstr "Producción"
 
 #: _helpers.html:15 _helpers.html:43 _helpers.html:71
-#: stock_traceability_report.html:32
+#: stock_move_location_report.html:32
 msgid "Lot"
 msgstr "Lote"
 
@@ -57,7 +57,7 @@ msgstr "UdM"
 msgid "Effective Date"
 msgstr "Fecha efectiva"
 
-#: _helpers.html:20 _helpers.html:48 stock_traceability_report.html:35
+#: _helpers.html:20 _helpers.html:48 stock_move_location_report.html:35
 msgid "Warehouse"
 msgstr "Almacén"
 
@@ -65,74 +65,74 @@ msgstr "Almacén"
 msgid "Lots"
 msgstr "Lotes"
 
-#: stock_traceability_report.html:10 stock_traceability_report.html:16
-msgid "Traceability"
-msgstr "Trazabilidad"
+#: stock_move_location_report.html:10 stock_move_location_report.html:16
+msgid "Stock Move Location"
+msgstr "Informe de movimentos por ubicación"
 
-#: stock_traceability_report.html:19
+#: stock_move_location_report.html:19
 msgid "Expand All"
 msgstr "Expandir todo"
 
-#: stock_traceability_report.html:24
+#: stock_move_location_report.html:24
 msgid "From Date"
 msgstr "Desde la fecha"
 
-#: stock_traceability_report.html:25
+#: stock_move_location_report.html:25
 msgid "To Date"
 msgstr "Hasta la fecha"
 
-#: stock_traceability_report.html:31
+#: stock_move_location_report.html:31
 msgid "Product"
 msgstr "Producto"
 
-#: stock_traceability_report.html:41
+#: stock_move_location_report.html:41
 msgid "Initial Stock"
 msgstr "Stock inicial"
 
-#: stock_traceability_report.html:49
+#: stock_move_location_report.html:49
 msgid "Supplier Incomming"
 msgstr "Entradas proveedor"
 
-#: stock_traceability_report.html:64
+#: stock_move_location_report.html:64
 msgid "Supplier Returns"
 msgstr "Devoluciones proveedor"
 
-#: stock_traceability_report.html:79
+#: stock_move_location_report.html:79
 msgid "Customer Outgoings"
 msgstr "Salidas cliente"
 
-#: stock_traceability_report.html:94
+#: stock_move_location_report.html:94
 msgid "Customer Returns"
 msgstr "Devoluciones cliente"
 
-#: stock_traceability_report.html:112
+#: stock_move_location_report.html:112
 msgid "Production Out"
 msgstr "Salidas producción"
 
-#: stock_traceability_report.html:127
+#: stock_move_location_report.html:127
 msgid "Production In"
 msgstr "Entradas producción"
 
-#: stock_traceability_report.html:143
+#: stock_move_location_report.html:143
 msgid "Inventory"
 msgstr "Inventario"
 
-#: stock_traceability_report.html:152
+#: stock_move_location_report.html:152
 msgid "From Lost & Found"
 msgstr "Desde perdido y encontrado"
 
-#: stock_traceability_report.html:161
+#: stock_move_location_report.html:161
 msgid "To Lost & Found"
 msgstr "A perdido y encontrado"
 
-#: stock_traceability_report.html:177
+#: stock_move_location_report.html:177
 msgid "Entries from outside warehouse"
 msgstr "Traspaso de entrada"
 
-#: stock_traceability_report.html:192
+#: stock_move_location_report.html:192
 msgid "Outputs from our warehouse"
 msgstr "Traspaso de salida"
 
-#: stock_traceability_report.html:204
+#: stock_move_location_report.html:204
 msgid "Total"
 msgstr "Total"
