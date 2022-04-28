@@ -1,18 +1,18 @@
-# This file is part stock_move_location_report module for Tryton.
-# The COPYRIGHT file at the top level of this repository contains
-# the full copyright notices and license terms.
+
+# This file is part of Tryton.  The COPYRIGHT file at the top level of
+# this repository contains the full copyright notices and license terms.
+
 from decimal import Decimal
-import unittest
 from trytond.tests.test_tryton import ModuleTestCase, with_transaction
-from trytond.tests.test_tryton import suite as test_suite
 from trytond.pool import Pool
 from trytond.transaction import Transaction
-from trytond.modules.company.tests import create_company, set_company
+from trytond.modules.company.tests import (CompanyTestMixin, create_company,
+    set_company)
 from trytond.modules.html_report.engine import DualRecord
 
 
-class StockMoveLocationReportTestCase(ModuleTestCase):
-    'Test Stock Move Location Report module'
+class StockMoveLocationReportTestCase(CompanyTestMixin, ModuleTestCase):
+    'Test StockMoveLocationReport module'
     module = 'stock_move_location_report'
 
     @with_transaction()
@@ -68,8 +68,5 @@ class StockMoveLocationReportTestCase(ModuleTestCase):
                 self.assertEqual(record['supplier_incommings_total'], 146)
                 self.assertEqual(len(record['supplier_incommings']), 4)
 
-def suite():
-    suite = test_suite()
-    suite.addTests(unittest.TestLoader().loadTestsFromTestCase(
-            StockMoveLocationReportTestCase))
-    return suite
+
+del ModuleTestCase
