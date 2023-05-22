@@ -28,6 +28,12 @@
             <field name="model">product.template,-1</field>
             <field name="action" ref="print_stock_move_location"/>
         </record>
+
+        <record model="ir.action.keyword" id="print_stock_move_location_product_product_keyword">
+            <field name="keyword">form_print</field>
+            <field name="model">product.product,-1</field>
+            <field name="action" ref="print_stock_move_location"/>
+        </record>
     </data>
 
     <data depends="stock_lot">
