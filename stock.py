@@ -151,7 +151,7 @@ class PrintStockMoveLocationReport(HTMLReport):
             move_ids = [m[0] for m in cursor.fetchall()]
             moves = Move.browse(move_ids)
             total = sum([Uom.compute_qty(
-                            m.uom, m.quantity, m.product.default_uom, True)
+                            m.unit, m.quantity, m.product.default_uom, True)
                             for m in moves])
             moves = [DualRecord(m) for m in moves]
             return total, moves

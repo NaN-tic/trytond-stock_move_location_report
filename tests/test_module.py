@@ -45,7 +45,7 @@ class StockMoveLocationReportTestCase(CompanyTestMixin, ModuleTestCase):
             for quantity in [10, 100, 1, 35]:
                 move, = Move.create([{
                             'product': product.id,
-                            'uom': unit.id,
+                            'unit': unit.id,
                             'quantity': quantity,
                             'from_location': supplier.id,
                             'to_location': storage.id,
