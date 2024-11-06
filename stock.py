@@ -122,9 +122,8 @@ class PrintStockMoveLocationReport(HTMLReport):
             ('type', '=', 'customer')])]
         location_lost_founds = [l.id for l in Location.search([
             ('type', '=', 'lost_found')])]
-        if Production:
-            location_productions = [l.id for l in Location.search([
-                ('type', '=', 'production')])]
+        location_productions = [l.id for l in Location.search([
+            ('type', '=', 'production')])] if Production else []
 
         keys = ()
         if data.get('model') == 'product.template':
@@ -206,7 +205,7 @@ class PrintStockMoveLocationReport(HTMLReport):
 
             production_outs_total = 0
             production_ins_total = 0
-            if Production:
+            if location_productions:
                 # production_outs: to_location = production
                 sql_where = (sql_common_where
                     & (move.from_location.in_(location_productions))
@@ -233,7 +232,7 @@ class PrintStockMoveLocationReport(HTMLReport):
             # Entries from outside warehouse
             locations_in_out = (locations + location_lost_founds
                 + location_suppliers + location_customers)
-            if Production:
+            if location_productions:
                 locations_in_out += location_productions
 
             sql_where = (sql_common_where
