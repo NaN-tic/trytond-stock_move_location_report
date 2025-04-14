@@ -15,7 +15,7 @@
         <tr>
           <td><h1>{{ _('Stock Move Location') }}</h1></td>
           <td align="right">
-            <a href="{{ base_url }}" alt="{{ data.parameters.company.render.rec_name }}">{{ data.parameters.company.render.rec_name }}</a>
+            <a href="{{ base_url }}" alt="{{ data.parameters.company and data.parameters.company.render.rec_name }}">{{ data.parameters.company and data.parameters.company.render.rec_name }}</a>
             <button type="button" class="btn tn-outline-light btn-sm" onclick="expand()">{{ _('Expand All') }}</button>
           </td>
         </tr>
