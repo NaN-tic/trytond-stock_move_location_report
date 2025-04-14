@@ -111,7 +111,8 @@ class PrintStockMoveLocationReport(HTMLReport):
         parameters['lot'] = True if Lot else False
         parameters['base_url'] = '%s/#%s' % (http_host(),
             Transaction().database.name)
-        parameters['company'] = DualRecord(Company(company_id))
+        parameters['company'] = (DualRecord(Company(company_id))
+            if company_id is not None and company_id >= 0 else None)
 
         # Locations
         locations = [l.id for l in Location.search([
