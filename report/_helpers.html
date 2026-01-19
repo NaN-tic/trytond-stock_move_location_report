@@ -25,7 +25,7 @@
     {% for record in records %}<tr>
       {% if parameters.get('lot') %}<td>{% if record.raw.lot %}<a href='{{ parameters.base_url }}/model/stock.lot/{{ record.lot.raw.id }};name="{{ _('Lots') }}"'>{{ record.lot.render.number }}</a>{% endif %}</td>{% endif %}
       <td>{{ record.render.quantity }}</td>
-      <td>{{ record.uom.render.symbol }}</td>
+      <td>{{ record.unit.render.symbol }}</td>
       <td>{% if record.origin %}{{ origin(record, parameters) }}{% endif %}
       </td>
       <td>{{ record.render.effective_date }}</td>
@@ -53,7 +53,7 @@
     {% for record in records %}<tr>{% set production=record|attr(in_out) %}
       {% if parameters.get('lot') %}<td>{% if record.raw.lot %}<a href='{{ parameters.base_url }}/model/stock.lot/{{ record.lot.raw.id }};name="{{ _('Lots') }}"'>{{ record.lot and record.lot.render.number }}</a>{% endif %}</td>{% endif %}
       <td><a href='{{ parameters.base_url }}/model/stock.move/{{ record.raw.id }};name="{{ _('Move') }}"'>{{ record.render.quantity }}</a></td>
-      <td>{{ record.uom.render.symbol }}</td>
+      <td>{{ record.unit.render.symbol }}</td>
       <td>{% if record.origin %}{{ origin(record, parameters) }}{% endif %}
       </td>
       <td>{{ record.render.effective_date }}</td>
@@ -80,7 +80,7 @@
     {% for record in records %}<tr>
       {% if parameters.get('lot') %}<td>{% if record.raw.lot %}<a href='{{ parameters.base_url }}/model/stock.lot/{{ record.lot.raw.id }};name="{{ _('Move') }}"'>{{ record.lot and record.lot.render.number }}</a>{% endif %}</td>{% endif %}
       <td><a href='{{ parameters.base_url }}/model/stock.move/{{ record.raw.id }};name="{{ record.render.rec_name }}"'>{{ record.render.quantity }}</a></td>
-      <td>{{ record.uom.render.symbol }}</td>
+      <td>{{ record.unit.render.symbol }}</td>
       <td>{% if record.origin %}{{ origin(record, parameters) }}{% endif %}
       </td>
       <td>{{ record.render.effective_date }}</td>
