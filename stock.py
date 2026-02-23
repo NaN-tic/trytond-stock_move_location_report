@@ -9,6 +9,7 @@ from trytond.transaction import Transaction
 from trytond.modules.html_report.dominate_report import DominateReportMixin
 from trytond.modules.html_report.engine import DualRecord
 from trytond.url import http_host
+from trytond.modules.html_report.i18n import _
 from dominate.util import raw
 from dominate.tags import (a, button, div, h1, i, script, strong, table, tbody,
     td, th, thead, tr)
@@ -282,15 +283,15 @@ class PrintStockMoveLocationReport(DominateReportMixin, metaclass=PoolMeta):
     def _origin(cls, record, parameters):
         origin = str(record.raw.origin)
         model, id_ = origin.split(',')
-        label = 'Origin'
+        label = _('Origin')
         if model == 'sale.line':
-            label = 'Sale Line'
+            label = _('Sale Line')
         if model == 'purhcase.line':
-            label = 'Purchase Line'
+            label = _('Purchase Line')
         if model == 'stock.move':
-            label = 'Move'
+            label = _('Move')
         if model == 'production':
-            label = 'Production'
+            label = _('Production')
         return a(record.origin.render.rec_name,
             href='%s/model/%s/%s;name="%s"' % (
                 parameters['base_url'], model, id_, label))
@@ -303,12 +304,12 @@ class PrintStockMoveLocationReport(DominateReportMixin, metaclass=PoolMeta):
             with thead():
                 with tr():
                     if parameters.get('lot'):
-                        th('Lot', scope='col')
-                    th('Quantity', scope='col')
-                    th('UdM', scope='col')
-                    th('Origin', scope='col')
-                    th('Effective Date', scope='col')
-                    th('Warehouse', scope='col')
+                        th(_('Lot'), scope='col')
+                    th(_('Quantity'), scope='col')
+                    th(_('UdM'), scope='col')
+                    th(_('Origin'), scope='col')
+                    th(_('Effective Date'), scope='col')
+                    th(_('Warehouse'), scope='col')
                     th('', scope='col')
             with tbody():
                 for record in records:
@@ -317,9 +318,10 @@ class PrintStockMoveLocationReport(DominateReportMixin, metaclass=PoolMeta):
                             with td():
                                 if getattr(record.raw, 'lot', None):
                                     a(record.lot.render.number,
-                                        href='%s/model/stock.lot/%s;name="Lots"' % (
+                                        href='%s/model/stock.lot/%s;name="%s"' % (
                                             parameters['base_url'],
-                                            record.lot.raw.id))
+                                            record.lot.raw.id,
+                                            _('Lots')))
                         td(record.render.quantity)
                         td(record.uom.render.symbol)
                         with td() as origin_cell:
@@ -330,9 +332,10 @@ class PrintStockMoveLocationReport(DominateReportMixin, metaclass=PoolMeta):
                             if record.shipment and record.shipment.warehouse else '')
                         with td():
                             a(i(cls='fas fa-arrow-right'),
-                                href='%s/model/stock.move/%s;name="Move"' % (
+                                href='%s/model/stock.move/%s;name="%s"' % (
                                     parameters['base_url'],
-                                    record.raw.id))
+                                    record.raw.id,
+                                    _('Move')))
         return detail_table
 
     @classmethod
@@ -342,12 +345,12 @@ class PrintStockMoveLocationReport(DominateReportMixin, metaclass=PoolMeta):
             with thead():
                 with tr():
                     if parameters.get('lot'):
-                        th('Lot', scope='col')
-                    th('Quantity', scope='col')
-                    th('UdM', scope='col')
-                    th('Origin', scope='col')
-                    th('Effective Date', scope='col')
-                    th('Warehouse', scope='col')
+                        th(_('Lot'), scope='col')
+                    th(_('Quantity'), scope='col')
+                    th(_('UdM'), scope='col')
+                    th(_('Origin'), scope='col')
+                    th(_('Effective Date'), scope='col')
+                    th(_('Warehouse'), scope='col')
                     th('', scope='col')
             with tbody():
                 for record in records:
@@ -357,14 +360,16 @@ class PrintStockMoveLocationReport(DominateReportMixin, metaclass=PoolMeta):
                             with td():
                                 if getattr(record.raw, 'lot', None):
                                     a(record.lot.render.number,
-                                        href='%s/model/stock.lot/%s;name="Lots"' % (
+                                        href='%s/model/stock.lot/%s;name="%s"' % (
                                             parameters['base_url'],
-                                            record.lot.raw.id))
+                                            record.lot.raw.id,
+                                            _('Lots')))
                         with td():
                             a(record.render.quantity,
-                                href='%s/model/stock.move/%s;name="Move"' % (
+                                href='%s/model/stock.move/%s;name="%s"' % (
                                     parameters['base_url'],
-                                    record.raw.id))
+                                    record.raw.id,
+                                    _('Move')))
                         td(record.uom.render.symbol)
                         with td() as origin_cell:
                             if record.origin:
@@ -373,9 +378,10 @@ class PrintStockMoveLocationReport(DominateReportMixin, metaclass=PoolMeta):
                         td(production.warehouse.render.rec_name)
                         with td():
                             a(i(cls='fas fa-arrow-right'),
-                                href='%s/model/stock.move/%s;name="Move"' % (
+                                href='%s/model/stock.move/%s;name="%s"' % (
                                     parameters['base_url'],
-                                    record.raw.id))
+                                    record.raw.id,
+                                    _('Move')))
         return detail_table
 
     @classmethod
@@ -386,11 +392,11 @@ class PrintStockMoveLocationReport(DominateReportMixin, metaclass=PoolMeta):
             with thead():
                 with tr():
                     if parameters.get('lot'):
-                        th('Lot', scope='col')
-                    th('Quantity', scope='col')
-                    th('UdM', scope='col')
-                    th('Origin', scope='col')
-                    th('Effective Date', scope='col')
+                        th(_('Lot'), scope='col')
+                    th(_('Quantity'), scope='col')
+                    th(_('UdM'), scope='col')
+                    th(_('Origin'), scope='col')
+                    th(_('Effective Date'), scope='col')
                     th('', scope='col')
             with tbody():
                 for record in records:
@@ -399,9 +405,10 @@ class PrintStockMoveLocationReport(DominateReportMixin, metaclass=PoolMeta):
                             with td():
                                 if getattr(record.raw, 'lot', None):
                                     a(record.lot.render.number,
-                                        href='%s/model/stock.lot/%s;name="Move"' % (
+                                        href='%s/model/stock.lot/%s;name="%s"' % (
                                             parameters['base_url'],
-                                            record.lot.raw.id))
+                                            record.lot.raw.id,
+                                            _('Lots')))
                         with td():
                             a(record.render.quantity,
                                 href='%s/model/stock.move/%s;name="%s"' % (
@@ -415,9 +422,10 @@ class PrintStockMoveLocationReport(DominateReportMixin, metaclass=PoolMeta):
                         td(record.render.effective_date)
                         with td():
                             a(i(cls='fas fa-arrow-right'),
-                                href='%s/model/stock.move/%s;name="Move"' % (
+                                href='%s/model/stock.move/%s;name="%s"' % (
                                     parameters['base_url'],
-                                    record.raw.id))
+                                    record.raw.id,
+                                    _('Move')))
         return detail_table
 
     @classmethod
@@ -429,7 +437,7 @@ class PrintStockMoveLocationReport(DominateReportMixin, metaclass=PoolMeta):
 
     @classmethod
     def title(cls, action, data, records):
-        return 'Stock Move Location'
+        return _('Stock Move Location')
 
     @classmethod
     def body(cls, action, data, records):
@@ -441,41 +449,41 @@ class PrintStockMoveLocationReport(DominateReportMixin, metaclass=PoolMeta):
                 with tbody():
                     with tr():
                         with td():
-                            h1('Stock Move Location')
+                            h1(_('Stock Move Location'))
                         with td(align='right'):
                             company = parameters.get('company')
                             if company:
                                 a(company.render.rec_name,
                                     href=parameters['base_url'],
                                     alt=company.render.rec_name)
-                            button('Expand All',
+                            button(_('Expand All'),
                                 type='button',
                                 cls='btn tn-outline-light btn-sm',
                                 onclick='expand()')
                     if parameters.get('show_date'):
                         with tr():
                             with td():
-                                strong('From Date:')
+                                strong(_('From Date:'))
                                 raw(' %s' % render(parameters['from_date']))
                             with td():
-                                strong('To Date:')
+                                strong(_('To Date:'))
                                 raw(' %s' % render(parameters['to_date']))
                     for record in data['records']:
                         with tr():
                             with td():
-                                strong('Product:')
+                                strong(_('Product:'))
                                 raw(' %s' % record['product'].render.rec_name)
                             with td():
                                 if record['lot']:
-                                    strong('Lot:')
+                                    strong(_('Lot:'))
                                     raw(' %s' % record['lot'].render.number)
                         with tr():
                             with td():
-                                strong('Warehouse:')
+                                strong(_('Warehouse:'))
                                 raw(' %s' % parameters['warehouse'])
                             td('')
                         with tr():
-                            td('Initial Stock')
+                            td(_('Initial Stock'))
                             td(render(record['initial_stock']))
                         with tr():
                             with td():
@@ -488,7 +496,7 @@ class PrintStockMoveLocationReport(DominateReportMixin, metaclass=PoolMeta):
                                         'aria-controls': 'supplier-incommings',
                                     }):
                                     i(cls='fas fa-angle-double-right')
-                                    raw(' Supplier Incomming')
+                                    raw(' ' + _('Supplier Incomming'))
                             td('%s %s' % (
                                 render(record['supplier_incommings_total']),
                                 record['product'].default_uom.render.symbol))
@@ -509,7 +517,7 @@ class PrintStockMoveLocationReport(DominateReportMixin, metaclass=PoolMeta):
                                         'aria-controls': 'supplier-returns',
                                     }):
                                     i(cls='fas fa-angle-double-right')
-                                    raw(' Supplier Returns')
+                                    raw(' ' + _('Supplier Returns'))
                             td('%s %s' % (
                                 render(record['supplier_returns_total']),
                                 record['product'].default_uom.render.symbol))
@@ -530,7 +538,7 @@ class PrintStockMoveLocationReport(DominateReportMixin, metaclass=PoolMeta):
                                         'aria-controls': 'customer-outgoings',
                                     }):
                                     i(cls='fas fa-angle-double-right')
-                                    raw(' Customer Outgoings')
+                                    raw(' ' + _('Customer Outgoings'))
                             td('%s %s' % (
                                 render(record['customer_outgoings_total']),
                                 record['product'].default_uom.render.symbol))
@@ -551,7 +559,7 @@ class PrintStockMoveLocationReport(DominateReportMixin, metaclass=PoolMeta):
                                         'aria-controls': 'customer-returns',
                                     }):
                                     i(cls='fas fa-angle-double-right')
-                                    raw(' Customer Returns')
+                                    raw(' ' + _('Customer Returns'))
                             td('%s %s' % (
                                 render(record['customer_returns_total']),
                                 record['product'].default_uom.render.symbol))
@@ -573,7 +581,7 @@ class PrintStockMoveLocationReport(DominateReportMixin, metaclass=PoolMeta):
                                             'aria-controls': 'production-outs',
                                         }):
                                         i(cls='fas fa-angle-double-right')
-                                        raw(' Production Out')
+                                        raw(' ' + _('Production Out'))
                                 td('%s %s' % (
                                     render(record['production_outs_total']),
                                     record['product'].default_uom.render.symbol))
@@ -595,7 +603,7 @@ class PrintStockMoveLocationReport(DominateReportMixin, metaclass=PoolMeta):
                                             'aria-controls': 'production-ins',
                                         }):
                                         i(cls='fas fa-angle-double-right')
-                                        raw(' Production In')
+                                        raw(' ' + _('Production In'))
                                 td('%s %s' % (
                                     render(record['production_ins_total']),
                                     record['product'].default_uom.render.symbol))
@@ -617,7 +625,7 @@ class PrintStockMoveLocationReport(DominateReportMixin, metaclass=PoolMeta):
                                         'aria-controls': 'inventory',
                                     }):
                                     i(cls='fas fa-angle-double-right')
-                                    raw(' Inventory')
+                                    raw(' ' + _('Inventory'))
                             td('%s %s' % (
                                 render(record['lost_found_total']),
                                 record['product'].default_uom.render.symbol))
@@ -629,7 +637,7 @@ class PrintStockMoveLocationReport(DominateReportMixin, metaclass=PoolMeta):
                                         with tr():
                                             with td():
                                                 i(cls='fas fa-angle-double-right')
-                                                raw(' From Lost & Found')
+                                                raw(' ' + _('From Lost & Found'))
                                             td('%s %s' % (
                                                 render(record['lost_found_from_total']),
                                                 record['product'].default_uom.render.symbol))
@@ -643,7 +651,7 @@ class PrintStockMoveLocationReport(DominateReportMixin, metaclass=PoolMeta):
                                         with tr():
                                             with td():
                                                 i(cls='fas fa-angle-double-right')
-                                                raw(' To Lost & Found')
+                                                raw(' ' + _('To Lost & Found'))
                                             td('%s %s' % (
                                                 render(record['lost_found_to_total']),
                                                 record['product'].default_uom.render.symbol))
@@ -664,7 +672,7 @@ class PrintStockMoveLocationReport(DominateReportMixin, metaclass=PoolMeta):
                                         'aria-controls': 'in-to',
                                     }):
                                     i(cls='fas fa-angle-double-right')
-                                    raw(' Entries from outside warehouse')
+                                    raw(' ' + _('Entries from outside warehouse'))
                             td('%s %s' % (
                                 render(record['in_to_total']),
                                 record['product'].default_uom.render.symbol))
@@ -685,7 +693,7 @@ class PrintStockMoveLocationReport(DominateReportMixin, metaclass=PoolMeta):
                                         'aria-controls': 'out-to',
                                     }):
                                     i(cls='fas fa-angle-double-right')
-                                    raw(' Outputs from our warehouse')
+                                    raw(' ' + _('Outputs from our warehouse'))
                             td('%s %s' % (
                                 render(record['out_to_total']),
                                 record['product'].default_uom.render.symbol))
@@ -696,7 +704,7 @@ class PrintStockMoveLocationReport(DominateReportMixin, metaclass=PoolMeta):
                                     record['out_to'],
                                     parameters))
                         with tr():
-                            td('Total')
+                            td(_('Total'))
                             td('%s %s' % (
                                 render(record['total']),
                                 record['product'].default_uom.render.symbol))
