@@ -1,15 +1,17 @@
 # The COPYRIGHT file at the top level of this repository contains the full
 # copyright notices and license terms.
-import os
 from datetime import datetime
 from trytond.model import fields, ModelView
-from trytond.pool import Pool
+from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Bool, Eval, If
 from trytond.wizard import Wizard, StateView, StateReport, Button
 from trytond.transaction import Transaction
-from trytond.modules.html_report.html_report import HTMLReport
+from trytond.modules.html_report.dominate_report import DominateReportMixin
 from trytond.modules.html_report.engine import DualRecord
 from trytond.url import http_host
+from dominate.util import raw
+from dominate.tags import (a, button, div, h1, i, script, strong, table, tbody,
+    td, th, thead, tr)
 
 
 class PrintStockMoveLocationStart(ModelView):
@@ -62,18 +64,8 @@ class PrintStockMoveLocation(Wizard):
         return action, data
 
 
-class PrintStockMoveLocationReport(HTMLReport):
+class PrintStockMoveLocationReport(DominateReportMixin, metaclass=PoolMeta):
     __name__ = 'stock.move.location.report'
-
-    @classmethod
-    def get_context(cls, records, data):
-        pool = Pool()
-        Company = pool.get('company.company')
-        t_context = Transaction().context
-
-        context = super().get_context(records, data)
-        context['company'] = Company(t_context['company'])
-        return context
 
     @classmethod
     def prepare(cls, data):
@@ -287,21 +279,453 @@ class PrintStockMoveLocationReport(HTMLReport):
         return records, parameters
 
     @classmethod
-    def execute(cls, ids, data):
-        context = Transaction().context
-        context['report_lang'] = Transaction().language
-        context['report_translations'] = os.path.join(
-            os.path.dirname(__file__), 'report', 'translations')
+    def _origin(cls, record, parameters):
+        origin = str(record.raw.origin)
+        model, id_ = origin.split(',')
+        label = 'Origin'
+        if model == 'sale.line':
+            label = 'Sale Line'
+        if model == 'purhcase.line':
+            label = 'Purchase Line'
+        if model == 'stock.move':
+            label = 'Move'
+        if model == 'production':
+            label = 'Production'
+        return a(record.origin.render.rec_name,
+            href='%s/model/%s/%s;name="%s"' % (
+                parameters['base_url'], model, id_, label))
 
-        with Transaction().set_context(**context):
-            records, parameters = cls.prepare(data)
-            return super(PrintStockMoveLocationReport, cls).execute(ids, {
-                    'name': 'stock.move.location.report',
-                    'model': data['model'],
-                    'records': records,
-                    'parameters': parameters,
-                    'output_format': 'html',
-                    'report_options': {
-                        'now': datetime.now(),
-                        }
-                    })
+    @classmethod
+    def _draw_table_shipment(cls, key, records, parameters):
+        table_attrs = {'cls': 'table collapse multi-collapse', 'id': key}
+        detail_table = table(**table_attrs)
+        with detail_table:
+            with thead():
+                with tr():
+                    if parameters.get('lot'):
+                        th('Lot', scope='col')
+                    th('Quantity', scope='col')
+                    th('UdM', scope='col')
+                    th('Origin', scope='col')
+                    th('Effective Date', scope='col')
+                    th('Warehouse', scope='col')
+                    th('', scope='col')
+            with tbody():
+                for record in records:
+                    with tr():
+                        if parameters.get('lot'):
+                            with td():
+                                if getattr(record.raw, 'lot', None):
+                                    a(record.lot.render.number,
+                                        href='%s/model/stock.lot/%s;name="Lots"' % (
+                                            parameters['base_url'],
+                                            record.lot.raw.id))
+                        td(record.render.quantity)
+                        td(record.uom.render.symbol)
+                        with td() as origin_cell:
+                            if record.origin:
+                                origin_cell.add(cls._origin(record, parameters))
+                        td(record.render.effective_date)
+                        td(record.shipment.warehouse.render.rec_name
+                            if record.shipment and record.shipment.warehouse else '')
+                        with td():
+                            a(i(cls='fas fa-arrow-right'),
+                                href='%s/model/stock.move/%s;name="Move"' % (
+                                    parameters['base_url'],
+                                    record.raw.id))
+        return detail_table
+
+    @classmethod
+    def _draw_table_production(cls, key, in_out, records, parameters):
+        detail_table = table(cls='table collapse multi-collapse', id=key)
+        with detail_table:
+            with thead():
+                with tr():
+                    if parameters.get('lot'):
+                        th('Lot', scope='col')
+                    th('Quantity', scope='col')
+                    th('UdM', scope='col')
+                    th('Origin', scope='col')
+                    th('Effective Date', scope='col')
+                    th('Warehouse', scope='col')
+                    th('', scope='col')
+            with tbody():
+                for record in records:
+                    production = getattr(record, in_out)
+                    with tr():
+                        if parameters.get('lot'):
+                            with td():
+                                if getattr(record.raw, 'lot', None):
+                                    a(record.lot.render.number,
+                                        href='%s/model/stock.lot/%s;name="Lots"' % (
+                                            parameters['base_url'],
+                                            record.lot.raw.id))
+                        with td():
+                            a(record.render.quantity,
+                                href='%s/model/stock.move/%s;name="Move"' % (
+                                    parameters['base_url'],
+                                    record.raw.id))
+                        td(record.uom.render.symbol)
+                        with td() as origin_cell:
+                            if record.origin:
+                                origin_cell.add(cls._origin(record, parameters))
+                        td(record.render.effective_date)
+                        td(production.warehouse.render.rec_name)
+                        with td():
+                            a(i(cls='fas fa-arrow-right'),
+                                href='%s/model/stock.move/%s;name="Move"' % (
+                                    parameters['base_url'],
+                                    record.raw.id))
+        return detail_table
+
+    @classmethod
+    def _draw_table(cls, key, records, parameters):
+        attrs = {'cls': 'table collapse multi-collapse', 'id': key} if key else {'cls': 'table'}
+        detail_table = table(**attrs)
+        with detail_table:
+            with thead():
+                with tr():
+                    if parameters.get('lot'):
+                        th('Lot', scope='col')
+                    th('Quantity', scope='col')
+                    th('UdM', scope='col')
+                    th('Origin', scope='col')
+                    th('Effective Date', scope='col')
+                    th('', scope='col')
+            with tbody():
+                for record in records:
+                    with tr():
+                        if parameters.get('lot'):
+                            with td():
+                                if getattr(record.raw, 'lot', None):
+                                    a(record.lot.render.number,
+                                        href='%s/model/stock.lot/%s;name="Move"' % (
+                                            parameters['base_url'],
+                                            record.lot.raw.id))
+                        with td():
+                            a(record.render.quantity,
+                                href='%s/model/stock.move/%s;name="%s"' % (
+                                    parameters['base_url'],
+                                    record.raw.id,
+                                    record.render.rec_name))
+                        td(record.uom.render.symbol)
+                        with td() as origin_cell:
+                            if record.origin:
+                                origin_cell.add(cls._origin(record, parameters))
+                        td(record.render.effective_date)
+                        with td():
+                            a(i(cls='fas fa-arrow-right'),
+                                href='%s/model/stock.move/%s;name="Move"' % (
+                                    parameters['base_url'],
+                                    record.raw.id))
+        return detail_table
+
+    @classmethod
+    def css(cls, action, data, records):
+        return "\n".join([
+            "@import url('https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css');",
+            "@import url('https://use.fontawesome.com/releases/v5.7.0/css/all.css');",
+            ])
+
+    @classmethod
+    def title(cls, action, data, records):
+        return 'Stock Move Location'
+
+    @classmethod
+    def body(cls, action, data, records):
+        parameters = data['parameters']
+        render = cls.render
+        wrapper = div()
+        with wrapper:
+            with table(cls='table'):
+                with tbody():
+                    with tr():
+                        with td():
+                            h1('Stock Move Location')
+                        with td(align='right'):
+                            company = parameters.get('company')
+                            if company:
+                                a(company.render.rec_name,
+                                    href=parameters['base_url'],
+                                    alt=company.render.rec_name)
+                            button('Expand All',
+                                type='button',
+                                cls='btn tn-outline-light btn-sm',
+                                onclick='expand()')
+                    if parameters.get('show_date'):
+                        with tr():
+                            with td():
+                                strong('From Date:')
+                                raw(' %s' % render(parameters['from_date']))
+                            with td():
+                                strong('To Date:')
+                                raw(' %s' % render(parameters['to_date']))
+                    for record in data['records']:
+                        with tr():
+                            with td():
+                                strong('Product:')
+                                raw(' %s' % record['product'].render.rec_name)
+                            with td():
+                                if record['lot']:
+                                    strong('Lot:')
+                                    raw(' %s' % record['lot'].render.number)
+                        with tr():
+                            with td():
+                                strong('Warehouse:')
+                                raw(' %s' % parameters['warehouse'])
+                            td('')
+                        with tr():
+                            td('Initial Stock')
+                            td(render(record['initial_stock']))
+                        with tr():
+                            with td():
+                                with a(href='#supplier-incommings',
+                                    cls='',
+                                    **{
+                                        'data-toggle': 'collapse',
+                                        'role': 'button',
+                                        'aria-expanded': 'false',
+                                        'aria-controls': 'supplier-incommings',
+                                    }):
+                                    i(cls='fas fa-angle-double-right')
+                                    raw(' Supplier Incomming')
+                            td('%s %s' % (
+                                render(record['supplier_incommings_total']),
+                                record['product'].default_uom.render.symbol))
+                        with tr():
+                            with td(colspan='2') as detail_cell:
+                                detail_cell.add(cls._draw_table_shipment(
+                                    'supplier-incommings',
+                                    record['supplier_incommings'],
+                                    parameters))
+                        with tr():
+                            with td():
+                                with a(href='#supplier-returns',
+                                    cls='',
+                                    **{
+                                        'data-toggle': 'collapse',
+                                        'role': 'button',
+                                        'aria-expanded': 'false',
+                                        'aria-controls': 'supplier-returns',
+                                    }):
+                                    i(cls='fas fa-angle-double-right')
+                                    raw(' Supplier Returns')
+                            td('%s %s' % (
+                                render(record['supplier_returns_total']),
+                                record['product'].default_uom.render.symbol))
+                        with tr():
+                            with td(colspan='2') as detail_cell:
+                                detail_cell.add(cls._draw_table(
+                                    'supplier-returns',
+                                    record['supplier_returns'],
+                                    parameters))
+                        with tr():
+                            with td():
+                                with a(href='#customer-outgoings',
+                                    cls='',
+                                    **{
+                                        'data-toggle': 'collapse',
+                                        'role': 'button',
+                                        'aria-expanded': 'false',
+                                        'aria-controls': 'customer-outgoings',
+                                    }):
+                                    i(cls='fas fa-angle-double-right')
+                                    raw(' Customer Outgoings')
+                            td('%s %s' % (
+                                render(record['customer_outgoings_total']),
+                                record['product'].default_uom.render.symbol))
+                        with tr():
+                            with td(colspan='2') as detail_cell:
+                                detail_cell.add(cls._draw_table_shipment(
+                                    'customer-outgoings',
+                                    record['customer_outgoings'],
+                                    parameters))
+                        with tr():
+                            with td():
+                                with a(href='#customer-returns',
+                                    cls='',
+                                    **{
+                                        'data-toggle': 'collapse',
+                                        'role': 'button',
+                                        'aria-expanded': 'false',
+                                        'aria-controls': 'customer-returns',
+                                    }):
+                                    i(cls='fas fa-angle-double-right')
+                                    raw(' Customer Returns')
+                            td('%s %s' % (
+                                render(record['customer_returns_total']),
+                                record['product'].default_uom.render.symbol))
+                        with tr():
+                            with td(colspan='2') as detail_cell:
+                                detail_cell.add(cls._draw_table_shipment(
+                                    'customer-returns',
+                                    record['customer_returns'],
+                                    parameters))
+                        if parameters.get('production'):
+                            with tr():
+                                with td():
+                                    with a(href='#production-outs',
+                                        cls='',
+                                        **{
+                                            'data-toggle': 'collapse',
+                                            'role': 'button',
+                                            'aria-expanded': 'false',
+                                            'aria-controls': 'production-outs',
+                                        }):
+                                        i(cls='fas fa-angle-double-right')
+                                        raw(' Production Out')
+                                td('%s %s' % (
+                                    render(record['production_outs_total']),
+                                    record['product'].default_uom.render.symbol))
+                            with tr():
+                                with td(colspan='2') as detail_cell:
+                                    detail_cell.add(cls._draw_table_production(
+                                        'production-outs',
+                                        'production_output',
+                                        record['production_outs'],
+                                        parameters))
+                            with tr():
+                                with td():
+                                    with a(href='#production-ins',
+                                        cls='',
+                                        **{
+                                            'data-toggle': 'collapse',
+                                            'role': 'button',
+                                            'aria-expanded': 'false',
+                                            'aria-controls': 'production-ins',
+                                        }):
+                                        i(cls='fas fa-angle-double-right')
+                                        raw(' Production In')
+                                td('%s %s' % (
+                                    render(record['production_ins_total']),
+                                    record['product'].default_uom.render.symbol))
+                            with tr():
+                                with td(colspan='2') as detail_cell:
+                                    detail_cell.add(cls._draw_table_production(
+                                        'production-ins',
+                                        'production_input',
+                                        record['production_ins'],
+                                        parameters))
+                        with tr():
+                            with td():
+                                with a(href='#inventory',
+                                    cls='',
+                                    **{
+                                        'data-toggle': 'collapse',
+                                        'role': 'button',
+                                        'aria-expanded': 'false',
+                                        'aria-controls': 'inventory',
+                                    }):
+                                    i(cls='fas fa-angle-double-right')
+                                    raw(' Inventory')
+                            td('%s %s' % (
+                                render(record['lost_found_total']),
+                                record['product'].default_uom.render.symbol))
+                        with tr():
+                            with td(colspan='2'):
+                                with table(cls='table collapse multi-collapse',
+                                        id='inventory'):
+                                    if record['lost_found_from']:
+                                        with tr():
+                                            with td():
+                                                i(cls='fas fa-angle-double-right')
+                                                raw(' From Lost & Found')
+                                            td('%s %s' % (
+                                                render(record['lost_found_from_total']),
+                                                record['product'].default_uom.render.symbol))
+                                        with tr():
+                                            with td(colspan='2') as detail_cell:
+                                                detail_cell.add(cls._draw_table(
+                                                    '',
+                                                    record['lost_found_from'],
+                                                    parameters))
+                                    if record['lost_found_to']:
+                                        with tr():
+                                            with td():
+                                                i(cls='fas fa-angle-double-right')
+                                                raw(' To Lost & Found')
+                                            td('%s %s' % (
+                                                render(record['lost_found_to_total']),
+                                                record['product'].default_uom.render.symbol))
+                                        with tr():
+                                            with td(colspan='2') as detail_cell:
+                                                detail_cell.add(cls._draw_table(
+                                                    '',
+                                                    record['lost_found_to'],
+                                                    parameters))
+                        with tr():
+                            with td():
+                                with a(href='#in-to',
+                                    cls='',
+                                    **{
+                                        'data-toggle': 'collapse',
+                                        'role': 'button',
+                                        'aria-expanded': 'false',
+                                        'aria-controls': 'in-to',
+                                    }):
+                                    i(cls='fas fa-angle-double-right')
+                                    raw(' Entries from outside warehouse')
+                            td('%s %s' % (
+                                render(record['in_to_total']),
+                                record['product'].default_uom.render.symbol))
+                        with tr():
+                            with td(colspan='2') as detail_cell:
+                                detail_cell.add(cls._draw_table(
+                                    'in-to',
+                                    record['in_to'],
+                                    parameters))
+                        with tr():
+                            with td():
+                                with a(href='#out-to',
+                                    cls='',
+                                    **{
+                                        'data-toggle': 'collapse',
+                                        'role': 'button',
+                                        'aria-expanded': 'false',
+                                        'aria-controls': 'out-to',
+                                    }):
+                                    i(cls='fas fa-angle-double-right')
+                                    raw(' Outputs from our warehouse')
+                            td('%s %s' % (
+                                render(record['out_to_total']),
+                                record['product'].default_uom.render.symbol))
+                        with tr():
+                            with td(colspan='2') as detail_cell:
+                                detail_cell.add(cls._draw_table(
+                                    'out-to',
+                                    record['out_to'],
+                                    parameters))
+                        with tr():
+                            td('Total')
+                            td('%s %s' % (
+                                render(record['total']),
+                                record['product'].default_uom.render.symbol))
+            script(src='https://code.jquery.com/jquery-3.3.1.slim.min.js',
+                integrity='sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo',
+                crossorigin='anonymous')
+            script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js',
+                integrity='sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1',
+                crossorigin='anonymous')
+            script(src='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js',
+                integrity='sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM',
+                crossorigin='anonymous')
+            script(raw("""
+function expand() {
+  $('.collapse').collapse('show');
+}
+"""), type='text/javascript', charset='utf-8')
+        return wrapper
+
+    @classmethod
+    def execute(cls, ids, data):
+        records, parameters = cls.prepare(data)
+        return super().execute(ids, {
+            'name': 'stock.move.location.report',
+            'model': data['model'],
+            'records': records,
+            'parameters': parameters,
+            'output_format': 'html',
+            'report_options': {
+                'now': datetime.now(),
+                }
+            })
