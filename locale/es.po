@@ -33,3 +33,127 @@ msgstr "Cancelar"
 msgctxt "wizard_button:stock.print_stock_move_location,start,print_:"
 msgid "Print"
 msgstr "Imprimir"
+
+msgctxt "html_report:h:"
+msgid "Stock Move Location"
+msgstr "Movimientos por ubicación"
+
+msgctxt "html_report:h:"
+msgid "Expand All"
+msgstr "Expandir todo"
+
+msgctxt "html_report:h:"
+msgid "From Date:"
+msgstr "Desde:"
+
+msgctxt "html_report:h:"
+msgid "To Date:"
+msgstr "Hasta:"
+
+msgctxt "html_report:h:"
+msgid "Product:"
+msgstr "Producto:"
+
+msgctxt "html_report:h:"
+msgid "Lot:"
+msgstr "Lote:"
+
+msgctxt "html_report:h:"
+msgid "Warehouse:"
+msgstr "Almacén:"
+
+msgctxt "html_report:h:"
+msgid "Initial Stock"
+msgstr "Stock inicial"
+
+msgctxt "html_report:h:"
+msgid "Supplier Incomming"
+msgstr "Entradas de proveedor"
+
+msgctxt "html_report:h:"
+msgid "Supplier Returns"
+msgstr "Devoluciones de proveedor"
+
+msgctxt "html_report:h:"
+msgid "Customer Outgoings"
+msgstr "Salidas de cliente"
+
+msgctxt "html_report:h:"
+msgid "Customer Returns"
+msgstr "Devoluciones de cliente"
+
+msgctxt "html_report:h:"
+msgid "Production Out"
+msgstr "Salidas de producción"
+
+msgctxt "html_report:h:"
+msgid "Production In"
+msgstr "Entradas de producción"
+
+msgctxt "html_report:h:"
+msgid "Inventory"
+msgstr "Inventario"
+
+msgctxt "html_report:h:"
+msgid "From Lost & Found"
+msgstr "Desde pérdidas y hallazgos"
+
+msgctxt "html_report:h:"
+msgid "To Lost & Found"
+msgstr "A pérdidas y hallazgos"
+
+msgctxt "html_report:h:"
+msgid "Entries from outside warehouse"
+msgstr "Entradas desde fuera del almacén"
+
+msgctxt "html_report:h:"
+msgid "Outputs from our warehouse"
+msgstr "Salidas desde nuestro almacén"
+
+msgctxt "html_report:h:"
+msgid "Total"
+msgstr "Total"
+
+msgctxt "html_report:h:"
+msgid "Lot"
+msgstr "Lote"
+
+msgctxt "html_report:h:"
+msgid "Quantity"
+msgstr "Cantidad"
+
+msgctxt "html_report:h:"
+msgid "UdM"
+msgstr "UdM"
+
+msgctxt "html_report:h:"
+msgid "Origin"
+msgstr "Origen"
+
+msgctxt "html_report:h:"
+msgid "Effective Date"
+msgstr "Fecha efectiva"
+
+msgctxt "html_report:h:"
+msgid "Warehouse"
+msgstr "Almacén"
+
+msgctxt "html_report:h:"
+msgid "Lots"
+msgstr "Lotes"
+
+msgctxt "html_report:h:"
+msgid "Move"
+msgstr "Movimiento"
+
+msgctxt "html_report:h:"
+msgid "Sale Line"
+msgstr "Línea de venta"
+
+msgctxt "html_report:h:"
+msgid "Purchase Line"
+msgstr "Línea de compra"
+
+msgctxt "html_report:h:"
+msgid "Production"
+msgstr "Producción"
