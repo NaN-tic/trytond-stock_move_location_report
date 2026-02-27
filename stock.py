@@ -2,11 +2,11 @@
 # copyright notices and license terms.
 from datetime import datetime
 from trytond.model import fields, ModelView
-from trytond.pool import Pool, PoolMeta
+from trytond.pool import Pool
 from trytond.pyson import Bool, Eval, If
 from trytond.wizard import Wizard, StateView, StateReport, Button
 from trytond.transaction import Transaction
-from trytond.modules.html_report.dominate_report import DominateReportMixin
+from trytond.modules.html_report.dominate_report import DominateReport
 from trytond.modules.html_report.engine import DualRecord
 from trytond.url import http_host
 from trytond.modules.html_report.i18n import _
@@ -65,7 +65,7 @@ class PrintStockMoveLocation(Wizard):
         return action, data
 
 
-class PrintStockMoveLocationReport(DominateReportMixin, metaclass=PoolMeta):
+class PrintStockMoveLocationReport(DominateReport):
     __name__ = 'stock.move.location.report'
 
     @classmethod
