@@ -7,7 +7,7 @@ from trytond.pyson import Bool, Eval, If
 from trytond.wizard import Wizard, StateView, StateReport, Button
 from trytond.transaction import Transaction
 from trytond.modules.html_report.dominate_report import DominateReport
-from trytond.modules.html_report.engine import DualRecord
+from trytond.modules.html_report.engine import DualRecord, render as html_render
 from trytond.url import http_host
 from trytond.modules.html_report.i18n import _
 from dominate.util import raw
@@ -442,7 +442,6 @@ class PrintStockMoveLocationReport(DominateReport):
     @classmethod
     def body(cls, action, data, records):
         parameters = data['parameters']
-        render = cls.render
         wrapper = div()
         with wrapper:
             with table(cls='table'):
@@ -464,10 +463,10 @@ class PrintStockMoveLocationReport(DominateReport):
                         with tr():
                             with td():
                                 strong(_('From Date:'))
-                                raw(' %s' % render(parameters['from_date']))
+                                raw(' %s' % html_render(parameters['from_date']))
                             with td():
                                 strong(_('To Date:'))
-                                raw(' %s' % render(parameters['to_date']))
+                                raw(' %s' % html_render(parameters['to_date']))
                     for record in data['records']:
                         with tr():
                             with td():
@@ -484,7 +483,7 @@ class PrintStockMoveLocationReport(DominateReport):
                             td('')
                         with tr():
                             td(_('Initial Stock'))
-                            td(render(record['initial_stock']))
+                            td(html_render(record['initial_stock']))
                         with tr():
                             with td():
                                 with a(href='#supplier-incommings',
@@ -498,7 +497,7 @@ class PrintStockMoveLocationReport(DominateReport):
                                     i(cls='fas fa-angle-double-right')
                                     raw(' ' + _('Supplier Incomming'))
                             td('%s %s' % (
-                                render(record['supplier_incommings_total']),
+                                html_render(record['supplier_incommings_total']),
                                 record['product'].default_uom.render.symbol))
                         with tr():
                             with td(colspan='2') as detail_cell:
@@ -519,7 +518,7 @@ class PrintStockMoveLocationReport(DominateReport):
                                     i(cls='fas fa-angle-double-right')
                                     raw(' ' + _('Supplier Returns'))
                             td('%s %s' % (
-                                render(record['supplier_returns_total']),
+                                html_render(record['supplier_returns_total']),
                                 record['product'].default_uom.render.symbol))
                         with tr():
                             with td(colspan='2') as detail_cell:
@@ -540,7 +539,7 @@ class PrintStockMoveLocationReport(DominateReport):
                                     i(cls='fas fa-angle-double-right')
                                     raw(' ' + _('Customer Outgoings'))
                             td('%s %s' % (
-                                render(record['customer_outgoings_total']),
+                                html_render(record['customer_outgoings_total']),
                                 record['product'].default_uom.render.symbol))
                         with tr():
                             with td(colspan='2') as detail_cell:
@@ -561,7 +560,7 @@ class PrintStockMoveLocationReport(DominateReport):
                                     i(cls='fas fa-angle-double-right')
                                     raw(' ' + _('Customer Returns'))
                             td('%s %s' % (
-                                render(record['customer_returns_total']),
+                                html_render(record['customer_returns_total']),
                                 record['product'].default_uom.render.symbol))
                         with tr():
                             with td(colspan='2') as detail_cell:
@@ -583,7 +582,7 @@ class PrintStockMoveLocationReport(DominateReport):
                                         i(cls='fas fa-angle-double-right')
                                         raw(' ' + _('Production Out'))
                                 td('%s %s' % (
-                                    render(record['production_outs_total']),
+                                    html_render(record['production_outs_total']),
                                     record['product'].default_uom.render.symbol))
                             with tr():
                                 with td(colspan='2') as detail_cell:
@@ -605,7 +604,7 @@ class PrintStockMoveLocationReport(DominateReport):
                                         i(cls='fas fa-angle-double-right')
                                         raw(' ' + _('Production In'))
                                 td('%s %s' % (
-                                    render(record['production_ins_total']),
+                                    html_render(record['production_ins_total']),
                                     record['product'].default_uom.render.symbol))
                             with tr():
                                 with td(colspan='2') as detail_cell:
@@ -627,7 +626,7 @@ class PrintStockMoveLocationReport(DominateReport):
                                     i(cls='fas fa-angle-double-right')
                                     raw(' ' + _('Inventory'))
                             td('%s %s' % (
-                                render(record['lost_found_total']),
+                                html_render(record['lost_found_total']),
                                 record['product'].default_uom.render.symbol))
                         with tr():
                             with td(colspan='2'):
@@ -639,7 +638,7 @@ class PrintStockMoveLocationReport(DominateReport):
                                                 i(cls='fas fa-angle-double-right')
                                                 raw(' ' + _('From Lost & Found'))
                                             td('%s %s' % (
-                                                render(record['lost_found_from_total']),
+                                                html_render(record['lost_found_from_total']),
                                                 record['product'].default_uom.render.symbol))
                                         with tr():
                                             with td(colspan='2') as detail_cell:
@@ -653,7 +652,7 @@ class PrintStockMoveLocationReport(DominateReport):
                                                 i(cls='fas fa-angle-double-right')
                                                 raw(' ' + _('To Lost & Found'))
                                             td('%s %s' % (
-                                                render(record['lost_found_to_total']),
+                                                html_render(record['lost_found_to_total']),
                                                 record['product'].default_uom.render.symbol))
                                         with tr():
                                             with td(colspan='2') as detail_cell:
@@ -674,7 +673,7 @@ class PrintStockMoveLocationReport(DominateReport):
                                     i(cls='fas fa-angle-double-right')
                                     raw(' ' + _('Entries from outside warehouse'))
                             td('%s %s' % (
-                                render(record['in_to_total']),
+                                html_render(record['in_to_total']),
                                 record['product'].default_uom.render.symbol))
                         with tr():
                             with td(colspan='2') as detail_cell:
@@ -695,7 +694,7 @@ class PrintStockMoveLocationReport(DominateReport):
                                     i(cls='fas fa-angle-double-right')
                                     raw(' ' + _('Outputs from our warehouse'))
                             td('%s %s' % (
-                                render(record['out_to_total']),
+                                html_render(record['out_to_total']),
                                 record['product'].default_uom.render.symbol))
                         with tr():
                             with td(colspan='2') as detail_cell:
@@ -706,7 +705,7 @@ class PrintStockMoveLocationReport(DominateReport):
                         with tr():
                             td(_('Total'))
                             td('%s %s' % (
-                                render(record['total']),
+                                html_render(record['total']),
                                 record['product'].default_uom.render.symbol))
             script(src='https://code.jquery.com/jquery-3.3.1.slim.min.js',
                 integrity='sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo',
