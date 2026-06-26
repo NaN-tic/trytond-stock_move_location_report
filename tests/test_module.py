@@ -19,6 +19,7 @@ class StockMoveLocationReportTestCase(CompanyTestMixin, ModuleTestCase):
     def test_tracebility_report(self):
         'Test Tracebility report'
         pool = Pool()
+        Lang = pool.get('ir.lang')
         Uom = pool.get('product.uom')
         Template = pool.get('product.template')
         Product = pool.get('product.product')
@@ -67,6 +68,17 @@ class StockMoveLocationReportTestCase(CompanyTestMixin, ModuleTestCase):
                 self.assertEqual(type(record['product']), DualRecord)
                 self.assertEqual(record['supplier_incommings_total'], 146)
                 self.assertEqual(len(record['supplier_incommings']), 4)
+                language = Transaction().language or 'en'
+                langs = Lang.search([('code', '=', language)], limit=1)
+                lang = langs[0] if langs else None
+                with Transaction().set_context(
+                        language=language,
+                        html_report_language=lang):
+                    body = PrintStockMoveLocationReport.body(None, {
+                            'records': records,
+                            'parameters': parameters,
+                            }, records)
+                self.assertIn(unit.symbol, str(body))
 
 
 del ModuleTestCase
