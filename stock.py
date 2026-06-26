@@ -323,7 +323,7 @@ class PrintStockMoveLocationReport(DominateReport):
                                             record.lot.raw.id,
                                             _('Lots')))
                         td(record.render.quantity)
-                        td(record.uom.render.symbol)
+                        td(record.unit.render.symbol)
                         with td() as origin_cell:
                             if record.origin:
                                 origin_cell.add(cls._origin(record, parameters))
@@ -370,7 +370,7 @@ class PrintStockMoveLocationReport(DominateReport):
                                     parameters['base_url'],
                                     record.raw.id,
                                     _('Move')))
-                        td(record.uom.render.symbol)
+                        td(record.unit.render.symbol)
                         with td() as origin_cell:
                             if record.origin:
                                 origin_cell.add(cls._origin(record, parameters))
@@ -415,7 +415,7 @@ class PrintStockMoveLocationReport(DominateReport):
                                     parameters['base_url'],
                                     record.raw.id,
                                     record.render.rec_name))
-                        td(record.uom.render.symbol)
+                        td(record.unit.render.symbol)
                         with td() as origin_cell:
                             if record.origin:
                                 origin_cell.add(cls._origin(record, parameters))
