@@ -34,126 +34,126 @@ msgctxt "wizard_button:stock.print_stock_move_location,start,print_:"
 msgid "Print"
 msgstr "Imprimeix"
 
-msgctxt "html_report:h:"
+msgctxt "xgettext:x:"
 msgid "Stock Move Location"
 msgstr "Movimients per ubicació"
 
-msgctxt "html_report:h:"
+msgctxt "xgettext:x:"
 msgid "Expand All"
 msgstr "Expandir-ho tot"
 
-msgctxt "html_report:h:"
+msgctxt "xgettext:x:"
 msgid "From Date:"
 msgstr "Des de:"
 
-msgctxt "html_report:h:"
+msgctxt "xgettext:x:"
 msgid "To Date:"
 msgstr "Fins:"
 
-msgctxt "html_report:h:"
+msgctxt "xgettext:x:"
 msgid "Product:"
 msgstr "Producte:"
 
-msgctxt "html_report:h:"
+msgctxt "xgettext:x:"
 msgid "Lot:"
 msgstr "Lot:"
 
-msgctxt "html_report:h:"
+msgctxt "xgettext:x:"
 msgid "Warehouse:"
 msgstr "Magatzem:"
 
-msgctxt "html_report:h:"
+msgctxt "xgettext:x:"
 msgid "Initial Stock"
 msgstr "Estoc inicial"
 
-msgctxt "html_report:h:"
+msgctxt "xgettext:x:"
 msgid "Supplier Incomming"
 msgstr "Entrades de proveïdor"
 
-msgctxt "html_report:h:"
+msgctxt "xgettext:x:"
 msgid "Supplier Returns"
 msgstr "Devolucions de proveïdor"
 
-msgctxt "html_report:h:"
+msgctxt "xgettext:x:"
 msgid "Customer Outgoings"
 msgstr "Sortides de client"
 
-msgctxt "html_report:h:"
+msgctxt "xgettext:x:"
 msgid "Customer Returns"
 msgstr "Devolucions de client"
 
-msgctxt "html_report:h:"
+msgctxt "xgettext:x:"
 msgid "Production Out"
 msgstr "Sortides de producció"
 
-msgctxt "html_report:h:"
+msgctxt "xgettext:x:"
 msgid "Production In"
 msgstr "Entrades de producció"
 
-msgctxt "html_report:h:"
+msgctxt "xgettext:x:"
 msgid "Inventory"
 msgstr "Inventari"
 
-msgctxt "html_report:h:"
+msgctxt "xgettext:x:"
 msgid "From Lost & Found"
 msgstr "Des de pèrdues i troballes"
 
-msgctxt "html_report:h:"
+msgctxt "xgettext:x:"
 msgid "To Lost & Found"
 msgstr "A pèrdues i troballes"
 
-msgctxt "html_report:h:"
+msgctxt "xgettext:x:"
 msgid "Entries from outside warehouse"
 msgstr "Entrades des de fora del magatzem"
 
-msgctxt "html_report:h:"
+msgctxt "xgettext:x:"
 msgid "Outputs from our warehouse"
 msgstr "Sortides des del nostre magatzem"
 
-msgctxt "html_report:h:"
+msgctxt "xgettext:x:"
 msgid "Total"
 msgstr "Total"
 
-msgctxt "html_report:h:"
+msgctxt "xgettext:x:"
 msgid "Lot"
 msgstr "Lot"
 
-msgctxt "html_report:h:"
+msgctxt "xgettext:x:"
 msgid "Quantity"
 msgstr "Quantitat"
 
-msgctxt "html_report:h:"
+msgctxt "xgettext:x:"
 msgid "UdM"
 msgstr "UdM"
 
-msgctxt "html_report:h:"
+msgctxt "xgettext:x:"
 msgid "Origin"
 msgstr "Origen"
 
-msgctxt "html_report:h:"
+msgctxt "xgettext:x:"
 msgid "Effective Date"
 msgstr "Data efectiva"
 
-msgctxt "html_report:h:"
+msgctxt "xgettext:x:"
 msgid "Warehouse"
 msgstr "Magatzem"
 
-msgctxt "html_report:h:"
+msgctxt "xgettext:x:"
 msgid "Lots"
 msgstr "Lots"
 
-msgctxt "html_report:h:"
+msgctxt "xgettext:x:"
 msgid "Move"
 msgstr "Moviment"
 
-msgctxt "html_report:h:"
+msgctxt "xgettext:x:"
 msgid "Sale Line"
 msgstr "Línia de venda"
 
-msgctxt "html_report:h:"
+msgctxt "xgettext:x:"
 msgid "Purchase Line"
 msgstr "Línia de compra"
 
-msgctxt "html_report:h:"
+msgctxt "xgettext:x:"
 msgid "Production"
 msgstr "Producció"
