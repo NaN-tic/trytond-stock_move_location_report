@@ -10,6 +10,7 @@ from configparser import ConfigParser
 MODULE = 'stock_move_location_report'
 PREFIX = 'nantic'
 MODULE2PREFIX = {
+    'xgettext': 'nantic',
     'html_report': 'nantic',
 }
 
