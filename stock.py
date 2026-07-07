@@ -1,3 +1,4 @@
+
 # The COPYRIGHT file at the top level of this repository contains the full
 # copyright notices and license terms.
 from datetime import datetime
@@ -9,11 +10,11 @@ from trytond.transaction import Transaction
 from trytond.modules.html_report.dominate_report import DominateReport
 from trytond.modules.html_report.engine import DualRecord, render as html_render
 from trytond.url import http_host
-from trytond.modules.html_report.i18n import _
+from trytond.modules.xgettext import _
+
 from dominate.util import raw
 from dominate.tags import (a, button, div, h1, i, script, strong, table, tbody,
     td, th, thead, tr)
-
 
 class PrintStockMoveLocationStart(ModelView):
     'Print Stock Move Location Start'
@@ -42,7 +43,6 @@ class PrintStockMoveLocationStart(ModelView):
         if len(locations) == 1:
             return locations[0].id
 
-
 class PrintStockMoveLocation(Wizard):
     'Print Stock Move Location'
     __name__ = 'stock.print_stock_move_location'
@@ -63,7 +63,6 @@ class PrintStockMoveLocation(Wizard):
             'ids': context.get('active_ids'),
             }
         return action, data
-
 
 class PrintStockMoveLocationReport(DominateReport):
     __name__ = 'stock.move.location.report'
