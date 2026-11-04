@@ -1,0 +1,168 @@
+#
+msgid ""
+msgstr ""
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+msgctxt "field:stock.move.location.start,from_date:"
+msgid "From Date"
+msgstr "从日期"
+
+msgctxt "field:stock.move.location.start,to_date:"
+msgid "To Date"
+msgstr "到日期"
+
+msgctxt "field:stock.move.location.start,warehouse:"
+msgid "Warehouse"
+msgstr "仓库"
+
+msgctxt "model:ir.action,name:print_stock_move_location"
+msgid "Stock Move Location"
+msgstr "库存移动库位"
+
+msgctxt "model:ir.action,name:report_stock_move_location"
+msgid "Stock Move Location"
+msgstr "库存移动库位"
+
+msgctxt "model:stock.move.location.start,name:"
+msgid "Print Stock Move Location Start"
+msgstr "打印库存移动库位：开始"
+
+msgctxt "wizard_button:stock.print_stock_move_location,start,end:"
+msgid "Cancel"
+msgstr "取消"
+
+msgctxt "wizard_button:stock.print_stock_move_location,start,print_:"
+msgid "Print"
+msgstr "打印"
+
+msgctxt "xgettext:x:"
+msgid "Stock Move Location"
+msgstr "库存移动库位"
+
+msgctxt "xgettext:x:"
+msgid "Expand All"
+msgstr "全部展开"
+
+msgctxt "xgettext:x:"
+msgid "From Date:"
+msgstr "从日期:"
+
+msgctxt "xgettext:x:"
+msgid "To Date:"
+msgstr "截止日期："
+
+msgctxt "xgettext:x:"
+msgid "Product:"
+msgstr "产品："
+
+msgctxt "xgettext:x:"
+msgid "Lot:"
+msgstr "批次："
+
+msgctxt "xgettext:x:"
+msgid "Warehouse:"
+msgstr "仓库:"
+
+msgctxt "xgettext:x:"
+msgid "Initial Stock"
+msgstr "期初库存"
+
+msgctxt "xgettext:x:"
+msgid "Supplier Incomming"
+msgstr "供应商入库"
+
+msgctxt "xgettext:x:"
+msgid "Supplier Returns"
+msgstr "向供应商退货"
+
+msgctxt "xgettext:x:"
+msgid "Customer Outgoings"
+msgstr "客户出库"
+
+msgctxt "xgettext:x:"
+msgid "Customer Returns"
+msgstr "接收客户退货"
+
+msgctxt "xgettext:x:"
+msgid "Production Out"
+msgstr "生产出库"
+
+msgctxt "xgettext:x:"
+msgid "Production In"
+msgstr "生产入库"
+
+msgctxt "xgettext:x:"
+msgid "Inventory"
+msgstr "库存盘点"
+
+msgctxt "xgettext:x:"
+msgid "From Lost & Found"
+msgstr "从盘盈盘亏库位调入"
+
+msgctxt "xgettext:x:"
+msgid "To Lost & Found"
+msgstr "调至盘盈盘亏库位"
+
+msgctxt "xgettext:x:"
+msgid "Entries from outside warehouse"
+msgstr "从仓库外部入库"
+
+msgctxt "xgettext:x:"
+msgid "Outputs from our warehouse"
+msgstr "从本仓库出库"
+
+msgctxt "xgettext:x:"
+msgid "Total"
+msgstr "合计"
+
+msgctxt "xgettext:x:"
+msgid "Lot"
+msgstr "批次"
+
+msgctxt "xgettext:x:"
+msgid "Quantity"
+msgstr "数量"
+
+msgctxt "xgettext:x:"
+msgid "UdM"
+msgstr "计量单位"
+
+msgctxt "xgettext:x:"
+msgid "Origin"
+msgstr "依据"
+
+msgctxt "xgettext:x:"
+msgid "Effective Date"
+msgstr "生效日期"
+
+msgctxt "xgettext:x:"
+msgid "Warehouse"
+msgstr "仓库"
+
+msgctxt "xgettext:x:"
+msgid "Lots"
+msgstr "批次"
+
+msgctxt "xgettext:x:"
+msgid "Move"
+msgstr "记账凭证"
+
+msgctxt "xgettext:x:"
+msgid "Sale Line"
+msgstr "销售明细"
+
+msgctxt "xgettext:x:"
+msgid "Purchase Line"
+msgstr "采购明细"
+
+msgctxt "xgettext:x:"
+msgid "Production"
+msgstr "生产"
+
+msgctxt "model:stock.move.location.start,string:"
+msgid "Stock Move Location Start"
+msgstr "库存移动库位：开始"
