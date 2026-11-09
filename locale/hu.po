@@ -1,0 +1,168 @@
+#
+msgid ""
+msgstr ""
+"Language: hu\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgctxt "field:stock.move.location.start,from_date:"
+msgid "From Date"
+msgstr "Ettől"
+
+msgctxt "field:stock.move.location.start,to_date:"
+msgid "To Date"
+msgstr "Eddig"
+
+msgctxt "field:stock.move.location.start,warehouse:"
+msgid "Warehouse"
+msgstr "Raktár"
+
+msgctxt "model:ir.action,name:print_stock_move_location"
+msgid "Stock Move Location"
+msgstr "Készletmozgás helye"
+
+msgctxt "model:ir.action,name:report_stock_move_location"
+msgid "Stock Move Location"
+msgstr "Készletmozgás helye"
+
+msgctxt "model:stock.move.location.start,name:"
+msgid "Print Stock Move Location Start"
+msgstr "Készletmozgási hely nyomtatása – Kezdés"
+
+msgctxt "wizard_button:stock.print_stock_move_location,start,end:"
+msgid "Cancel"
+msgstr "Mégse"
+
+msgctxt "wizard_button:stock.print_stock_move_location,start,print_:"
+msgid "Print"
+msgstr "Nyomtatás"
+
+msgctxt "xgettext:x:"
+msgid "Stock Move Location"
+msgstr "Készletmozgás helye"
+
+msgctxt "xgettext:x:"
+msgid "Expand All"
+msgstr "Összes kibontása"
+
+msgctxt "xgettext:x:"
+msgid "From Date:"
+msgstr "Ettől:"
+
+msgctxt "xgettext:x:"
+msgid "To Date:"
+msgstr "Záró dátum:"
+
+msgctxt "xgettext:x:"
+msgid "Product:"
+msgstr "Termék:"
+
+msgctxt "xgettext:x:"
+msgid "Lot:"
+msgstr "Tételszám:"
+
+msgctxt "xgettext:x:"
+msgid "Warehouse:"
+msgstr "Raktár:"
+
+msgctxt "xgettext:x:"
+msgid "Initial Stock"
+msgstr "Nyitókészlet"
+
+msgctxt "xgettext:x:"
+msgid "Supplier Incomming"
+msgstr "Szállítói beérkezés"
+
+msgctxt "xgettext:x:"
+msgid "Supplier Returns"
+msgstr "Szállítói visszáruk"
+
+msgctxt "xgettext:x:"
+msgid "Customer Outgoings"
+msgstr "Vevői kiszállítás"
+
+msgctxt "xgettext:x:"
+msgid "Customer Returns"
+msgstr "Vevői visszáruk"
+
+msgctxt "xgettext:x:"
+msgid "Production Out"
+msgstr "Gyártási kiadás"
+
+msgctxt "xgettext:x:"
+msgid "Production In"
+msgstr "Gyártási bevétel"
+
+msgctxt "xgettext:x:"
+msgid "Inventory"
+msgstr "Leltár"
+
+msgctxt "xgettext:x:"
+msgid "From Lost & Found"
+msgstr "Leltáreltérési helyről"
+
+msgctxt "xgettext:x:"
+msgid "To Lost & Found"
+msgstr "Leltáreltérési helyre"
+
+msgctxt "xgettext:x:"
+msgid "Entries from outside warehouse"
+msgstr "Raktáron kívülről beérkező tételek"
+
+msgctxt "xgettext:x:"
+msgid "Outputs from our warehouse"
+msgstr "Saját raktárunkból kimenő tételek"
+
+msgctxt "xgettext:x:"
+msgid "Total"
+msgstr "Összesen"
+
+msgctxt "xgettext:x:"
+msgid "Lot"
+msgstr "Gyártási tétel"
+
+msgctxt "xgettext:x:"
+msgid "Quantity"
+msgstr "Mennyiség"
+
+msgctxt "xgettext:x:"
+msgid "UdM"
+msgstr "Mértékegység"
+
+msgctxt "xgettext:x:"
+msgid "Origin"
+msgstr "Eredet"
+
+msgctxt "xgettext:x:"
+msgid "Effective Date"
+msgstr "Befejezés dátuma"
+
+msgctxt "xgettext:x:"
+msgid "Warehouse"
+msgstr "Raktár"
+
+msgctxt "xgettext:x:"
+msgid "Lots"
+msgstr "Gyártási tételek"
+
+msgctxt "xgettext:x:"
+msgid "Move"
+msgstr "Bizonylat"
+
+msgctxt "xgettext:x:"
+msgid "Sale Line"
+msgstr "Vevői rendelés sora"
+
+msgctxt "xgettext:x:"
+msgid "Purchase Line"
+msgstr "Beszerzési rendelés sora"
+
+msgctxt "xgettext:x:"
+msgid "Production"
+msgstr "gyártás"
+
+msgctxt "model:stock.move.location.start,string:"
+msgid "Stock Move Location Start"
+msgstr "Készletmozgási hely – Kezdés"
