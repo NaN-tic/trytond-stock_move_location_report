@@ -42,4 +42,10 @@
             <field name="action" ref="print_stock_move_location"/>
         </record>
     </data>
+    <data>
+        <record model="ir.action-res.group" id="print_stock_move_location_group_stock">
+            <field name="action" ref="print_stock_move_location"/>
+            <field name="group" ref="stock.group_stock"/>
+        </record>
+    </data>
 </tryton>
