@@ -1,0 +1,168 @@
+#
+msgid ""
+msgstr ""
+"Language: km\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+msgctxt "field:stock.move.location.start,from_date:"
+msgid "From Date"
+msgstr "ចាប់ពីកាលបរិច្ឆេទ"
+
+msgctxt "field:stock.move.location.start,to_date:"
+msgid "To Date"
+msgstr "ដល់កាលបរិច្ឆេទ"
+
+msgctxt "field:stock.move.location.start,warehouse:"
+msgid "Warehouse"
+msgstr "ឃ្លាំង"
+
+msgctxt "model:ir.action,name:print_stock_move_location"
+msgid "Stock Move Location"
+msgstr "ទីតាំងចលនាស្តុក"
+
+msgctxt "model:ir.action,name:report_stock_move_location"
+msgid "Stock Move Location"
+msgstr "ទីតាំងចលនាស្តុក"
+
+msgctxt "model:stock.move.location.start,name:"
+msgid "Print Stock Move Location Start"
+msgstr "ចាប់ផ្ដើមបោះពុម្ពទីតាំងចលនាស្តុក"
+
+msgctxt "wizard_button:stock.print_stock_move_location,start,end:"
+msgid "Cancel"
+msgstr "បោះបង់"
+
+msgctxt "wizard_button:stock.print_stock_move_location,start,print_:"
+msgid "Print"
+msgstr "បោះពុម្ព"
+
+msgctxt "xgettext:x:"
+msgid "Stock Move Location"
+msgstr "ទីតាំងចលនាស្តុក"
+
+msgctxt "xgettext:x:"
+msgid "Expand All"
+msgstr "ពង្រីកទាំងអស់"
+
+msgctxt "xgettext:x:"
+msgid "From Date:"
+msgstr "ចាប់ពីកាលបរិច្ឆេទ៖"
+
+msgctxt "xgettext:x:"
+msgid "To Date:"
+msgstr "ដល់កាលបរិច្ឆេទ៖"
+
+msgctxt "xgettext:x:"
+msgid "Product:"
+msgstr "ផលិតផល៖"
+
+msgctxt "xgettext:x:"
+msgid "Lot:"
+msgstr "ឡូត៍៖"
+
+msgctxt "xgettext:x:"
+msgid "Warehouse:"
+msgstr "ឃ្លាំង៖"
+
+msgctxt "xgettext:x:"
+msgid "Initial Stock"
+msgstr "ស្តុកដំបូង"
+
+msgctxt "xgettext:x:"
+msgid "Supplier Incomming"
+msgstr "ចលនាចូលពីអ្នកផ្គត់ផ្គង់"
+
+msgctxt "xgettext:x:"
+msgid "Supplier Returns"
+msgstr "ទំនិញត្រឡប់ទៅអ្នកផ្គត់ផ្គង់"
+
+msgctxt "xgettext:x:"
+msgid "Customer Outgoings"
+msgstr "ចលនាចេញទៅអតិថិជន"
+
+msgctxt "xgettext:x:"
+msgid "Customer Returns"
+msgstr "ទំនិញដែលអតិថិជនប្រគល់វិញ"
+
+msgctxt "xgettext:x:"
+msgid "Production Out"
+msgstr "ចលនាចេញពីផលិតកម្ម"
+
+msgctxt "xgettext:x:"
+msgid "Production In"
+msgstr "ចលនាចូលផលិតកម្ម"
+
+msgctxt "xgettext:x:"
+msgid "Inventory"
+msgstr "សារពើភណ្ឌ"
+
+msgctxt "xgettext:x:"
+msgid "From Lost & Found"
+msgstr "ពីទីតាំងបាត់ និងរកឃើញ"
+
+msgctxt "xgettext:x:"
+msgid "To Lost & Found"
+msgstr "ទៅទីតាំងបាត់ និងរកឃើញ"
+
+msgctxt "xgettext:x:"
+msgid "Entries from outside warehouse"
+msgstr "ចលនាចូលពីក្រៅឃ្លាំង"
+
+msgctxt "xgettext:x:"
+msgid "Outputs from our warehouse"
+msgstr "ចលនាចេញពីឃ្លាំងរបស់យើង"
+
+msgctxt "xgettext:x:"
+msgid "Total"
+msgstr "សរុប"
+
+msgctxt "xgettext:x:"
+msgid "Lot"
+msgstr "ឡូត៍"
+
+msgctxt "xgettext:x:"
+msgid "Quantity"
+msgstr "បរិមាណ"
+
+msgctxt "xgettext:x:"
+msgid "UdM"
+msgstr "ឯកតារង្វាស់"
+
+msgctxt "xgettext:x:"
+msgid "Origin"
+msgstr "ប្រភពដើម"
+
+msgctxt "xgettext:x:"
+msgid "Effective Date"
+msgstr "កាលបរិច្ឆេទជាក់ស្តែង"
+
+msgctxt "xgettext:x:"
+msgid "Warehouse"
+msgstr "ឃ្លាំង"
+
+msgctxt "xgettext:x:"
+msgid "Lots"
+msgstr "ឡូត៍"
+
+msgctxt "xgettext:x:"
+msgid "Move"
+msgstr "ចលនាស្តុក"
+
+msgctxt "xgettext:x:"
+msgid "Sale Line"
+msgstr "បន្ទាត់ការលក់"
+
+msgctxt "xgettext:x:"
+msgid "Purchase Line"
+msgstr "បន្ទាត់ការទិញ"
+
+msgctxt "xgettext:x:"
+msgid "Production"
+msgstr "ផលិតកម្ម"
+
+msgctxt "model:stock.move.location.start,string:"
+msgid "Stock Move Location Start"
+msgstr "ចាប់ផ្ដើមបង្ហាញទីតាំងចលនាស្តុក"
